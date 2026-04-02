@@ -1,0 +1,33 @@
+{
+  "name": "dubsado-cli",
+  "version": "0.1.0",
+  "description": "CLI wrapper for the Dubsado API — optimized for LLM consumption",
+  "type": "module",
+  "bin": {
+    "dubsado": "./dist/cli/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsx src/cli/index.ts",
+    "test": "vitest run",
+    "lint": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "files": [
+    "dist",
+    "skills"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^14.0.3",
+    "playwright-core": "^1.59.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2",
+    "vitest": "^4.1.2"
+  }
+}

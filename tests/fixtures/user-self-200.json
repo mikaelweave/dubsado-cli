@@ -1,0 +1,25 @@
+{
+  "user": {
+    "_id": "69ce8d50920cc40b63fb7d1f",
+    "email": "mikael@mikael.dev",
+    "contact": {
+      "firstName": "Mikael",
+      "lastName": "Weaver"
+    },
+    "locale": "en-us",
+    "isLocked": false,
+    "isSoftLocked": false,
+    "isUnverified": false,
+    "createdAt": "2026-04-02T15:37:52.247Z",
+    "updatedAt": "2026-04-02T19:08:46.743Z",
+    "isDeviceVerificationEnabled": true,
+    "isNewDashboard": true,
+    "activeBrand": "69ce8d50920cc40b63fb7d32",
+    "hmac": "abc123secret",
+    "attribution": { "source": "direct" },
+    "emailPreferences": { "fromBusiness": false },
+    "isCelsius": false,
+    "paymentFailedAttempts": 0,
+    "bccMe": false
+  }
+}
