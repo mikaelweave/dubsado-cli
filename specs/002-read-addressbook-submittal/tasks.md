@@ -21,13 +21,13 @@
 
 **⚠️ CRITICAL**: No user story work can begin until this phase is complete.
 
-- [ ] T001 [P] Define Client interface in src/types/client.ts per data-model.md: id, firstName, lastName, email, phone, company, tags (string[]), createdAt — all strings except tags
-- [ ] T002 [P] Define Form interface in src/types/form.ts per data-model.md: id, name, type, status, clientId, clientName, projectId, createdAt, updatedAt — all strings
-- [ ] T003 Re-export Client and Form types from src/types/index.ts (add to existing exports)
-- [ ] T004 [P] Record API fixture: call `GET /api/clients/search?count=50&page=1&sort=firstName&filter={"search":""}&custom={"select":"_id firstName lastName email address company phone"}` with a valid session, save response to tests/fixtures/client-list-200.json
-- [ ] T005 [P] Record API fixture: call `GET /api/clients/<known-id>` with a valid session, save response to tests/fixtures/client-get-200.json
-- [ ] T006 [P] Record API fixture: call `GET /api/forms/?populate=true` with a valid session, save response to tests/fixtures/form-list-200.json
-- [ ] T007 [P] Record API fixture: call `GET /api/forms/<known-id>?populate=true` with a valid session, save response to tests/fixtures/form-get-200.json
+- [X] T001 [P] Define Client interface in src/types/client.ts per data-model.md: id, firstName, lastName, email, phone, company, tags (string[]), createdAt — all strings except tags
+- [X] T002 [P] Define Form interface in src/types/form.ts per data-model.md: id, name, type, status, clientId, clientName, projectId, createdAt, updatedAt — all strings
+- [X] T003 Re-export Client and Form types from src/types/index.ts (add to existing exports)
+- [X] T004 [P] Record API fixture: call `GET /api/clients/search?count=50&page=1&sort=firstName&filter={"search":""}&custom={"select":"_id firstName lastName email address company phone"}` with a valid session, save response to tests/fixtures/client-list-200.json
+- [X] T005 [P] Record API fixture: call `GET /api/clients/<known-id>` with a valid session, save response to tests/fixtures/client-get-200.json
+- [X] T006 [P] Record API fixture: call `GET /api/forms/?populate=true` with a valid session, save response to tests/fixtures/form-list-200.json
+- [X] T007 [P] Record API fixture: call `GET /api/forms/<known-id>?populate=true` with a valid session, save response to tests/fixtures/form-get-200.json
 
 **Checkpoint**: Types compile with `tsc --noEmit`. Fixture files contain actual Dubsado API responses.
 
@@ -41,13 +41,13 @@
 
 ### Implementation for User Story 1
 
-- [ ] T008 [US1] Implement client list command in src/cli/client/list.ts: call authenticatedFetch with `/api/clients/search?count=50&page=1&sort=firstName&filter={"search":""}&custom={"select":"_id+firstName+lastName+email+address+company+phone","filterFields":["firstName","lastName","email","company.name","phone"],"search":""}`, export mapClient() function that maps raw response to Client interface (allowlist: \_id→id, firstName, lastName, email, phone, company.name→company, tags or [], normalize createdAt), unwrap response wrapper (inspect fixture to determine if array is at root or under a key like `clients`), map each item, wrap in output envelope
-- [ ] T009 [US1] Register client subcommand group in src/cli/index.ts: create `client` command group with description "Client commands", add list subcommand from src/cli/client/list.ts
+- [X] T008 [US1] Implement client list command in src/cli/client/list.ts: call authenticatedFetch with `/api/clients/search?count=50&page=1&sort=firstName&filter={"search":""}&custom={"select":"_id+firstName+lastName+email+address+company+phone","filterFields":["firstName","lastName","email","company.name","phone"],"search":""}`, export mapClient() function that maps raw response to Client interface (allowlist: \_id→id, firstName, lastName, email, phone, company.name→company, tags or [], normalize createdAt), unwrap response wrapper (inspect fixture to determine if array is at root or under a key like `clients`), map each item, wrap in output envelope
+- [X] T009 [US1] Register client subcommand group in src/cli/index.ts: create `client` command group with description "Client commands", add list subcommand from src/cli/client/list.ts
 
 ### Tests for User Story 1
 
-- [ ] T010 [P] [US1] Write unit tests in tests/unit/client-list.test.ts: test mapClient() with fixture data — verify field mapping, missing field defaults, date normalization, unknown fields are stripped
-- [ ] T011 [P] [US1] Write integration tests in tests/integration/client-list.test.ts: test full command with mocked fetch — success (200 with fixture), empty list, auth error (401), API error (500)
+- [X] T010 [P] [US1] Write unit tests in tests/unit/client-list.test.ts: test mapClient() with fixture data — verify field mapping, missing field defaults, date normalization, unknown fields are stripped
+- [X] T011 [P] [US1] Write integration tests in tests/integration/client-list.test.ts: test full command with mocked fetch — success (200 with fixture), empty list, auth error (401), API error (500)
 
 **Checkpoint**: `dubsado client list` returns `{ ok: true, data: [...] }` with clean client objects. `npm test` passes for client-list tests.
 
@@ -61,13 +61,13 @@
 
 ### Implementation for User Story 2
 
-- [ ] T012 [US2] Implement client get command in src/cli/client/get.ts: accept `<id>` required argument, call authenticatedFetch(`/api/clients/${id}`), reuse mapClient() from src/cli/client/list.ts (export it), unwrap single-object response, wrap in output envelope, handle 404 as `Dubsado API returned HTTP 404.`
-- [ ] T013 [US2] Register client get subcommand in src/cli/index.ts: add get subcommand under the `client` command group
+- [X] T012 [US2] Implement client get command in src/cli/client/get.ts: accept `<id>` required argument, call authenticatedFetch(`/api/clients/${id}`), reuse mapClient() from src/cli/client/list.ts (export it), unwrap single-object response, wrap in output envelope, handle 404 as `Dubsado API returned HTTP 404.`
+- [X] T013 [US2] Register client get subcommand in src/cli/index.ts: add get subcommand under the `client` command group
 
 ### Tests for User Story 2
 
-- [ ] T014 [P] [US2] Write unit tests in tests/unit/client-get.test.ts: test mapClient() with single-object fixture — same mapper, different wrapper handling
-- [ ] T015 [P] [US2] Write integration tests in tests/integration/client-get.test.ts: test full command — success (200), missing ID argument error, 404 not found, auth error
+- [X] T014 [P] [US2] Write unit tests in tests/unit/client-get.test.ts: test mapClient() with single-object fixture — same mapper, different wrapper handling
+- [X] T015 [P] [US2] Write integration tests in tests/integration/client-get.test.ts: test full command — success (200), missing ID argument error, 404 not found, auth error
 
 **Checkpoint**: `dubsado client get <id>` returns `{ ok: true, data: { ... } }`. Both client commands work.
 
@@ -81,13 +81,13 @@
 
 ### Implementation for User Story 3
 
-- [ ] T016 [US3] Implement form list command in src/cli/form/list.ts: call authenticatedFetch('/api/forms/?populate=true'), export mapForm() function that maps raw response to Form interface (allowlist: \_id→id, name/title→name, type/formType→type, status, handle populated client object vs bare ID for clientId/clientName, projectId/job→projectId, normalize createdAt/updatedAt), unwrap response wrapper (inspect fixture), map each item, wrap in output envelope
-- [ ] T017 [US3] Register form subcommand group in src/cli/index.ts: create `form` command group with description "Form commands", add list subcommand from src/cli/form/list.ts
+- [X] T016 [US3] Implement form list command in src/cli/form/list.ts: call authenticatedFetch('/api/forms/?populate=true'), export mapForm() function that maps raw response to Form interface (allowlist: \_id→id, name/title→name, type/formType→type, status, handle populated client object vs bare ID for clientId/clientName, projectId/job→projectId, normalize createdAt/updatedAt), unwrap response wrapper (inspect fixture), map each item, wrap in output envelope
+- [X] T017 [US3] Register form subcommand group in src/cli/index.ts: create `form` command group with description "Form commands", add list subcommand from src/cli/form/list.ts
 
 ### Tests for User Story 3
 
-- [ ] T018 [P] [US3] Write unit tests in tests/unit/form-list.test.ts: test mapForm() with fixture data — field mapping, populated client handling, bare ID fallback, date normalization, unknown field stripping
-- [ ] T019 [P] [US3] Write integration tests in tests/integration/form-list.test.ts: test full command — success (200 with fixture), empty list, auth error, API error
+- [X] T018 [P] [US3] Write unit tests in tests/unit/form-list.test.ts: test mapForm() with fixture data — field mapping, populated client handling, bare ID fallback, date normalization, unknown field stripping
+- [X] T019 [P] [US3] Write integration tests in tests/integration/form-list.test.ts: test full command — success (200 with fixture), empty list, auth error, API error
 
 **Checkpoint**: `dubsado form list` returns `{ ok: true, data: [...] }` with clean form objects. `npm test` passes for form-list tests.
 
@@ -101,13 +101,13 @@
 
 ### Implementation for User Story 4
 
-- [ ] T020 [US4] Implement form get command in src/cli/form/get.ts: accept `<id>` required argument, call authenticatedFetch(`/api/forms/${id}?populate=true`), reuse mapForm() from src/cli/form/list.ts, unwrap single-object response, wrap in output envelope, handle 404
-- [ ] T021 [US4] Register form get subcommand in src/cli/index.ts: add get subcommand under the `form` command group
+- [X] T020 [US4] Implement form get command in src/cli/form/get.ts: accept `<id>` required argument, call authenticatedFetch(`/api/forms/${id}?populate=true`), reuse mapForm() from src/cli/form/list.ts, unwrap single-object response, wrap in output envelope, handle 404
+- [X] T021 [US4] Register form get subcommand in src/cli/index.ts: add get subcommand under the `form` command group
 
 ### Tests for User Story 4
 
-- [ ] T022 [P] [US4] Write unit tests in tests/unit/form-get.test.ts: test mapForm() with single-object fixture
-- [ ] T023 [P] [US4] Write integration tests in tests/integration/form-get.test.ts: test full command — success, missing ID argument, 404, auth error
+- [X] T022 [P] [US4] Write unit tests in tests/unit/form-get.test.ts: test mapForm() with single-object fixture
+- [X] T023 [P] [US4] Write integration tests in tests/integration/form-get.test.ts: test full command — success, missing ID argument, 404, auth error
 
 **Checkpoint**: `dubsado form get <id>` returns `{ ok: true, data: { ... } }`. All 4 commands work.
 
@@ -117,9 +117,9 @@
 
 **Purpose**: Update skill file, validate end-to-end, ensure all tests and lint pass.
 
-- [ ] T024 [P] Update skills/dubsado.md: add command reference for `client list`, `client get`, `form list`, `form get` with flags, example invocations, and output shapes per contracts/cli-commands.md
-- [ ] T025 Run full test suite: `npm test && npm run lint` — all existing + new tests must pass
-- [ ] T026 Run quickstart.md validation: walk through `dubsado client list` → `dubsado client get <id>` → `dubsado form list` → `dubsado form get <id>` end-to-end with a live session
+- [X] T024 [P] Update skills/dubsado.md: add command reference for `client list`, `client get`, `form list`, `form get` with flags, example invocations, and output shapes per contracts/cli-commands.md
+- [X] T025 Run full test suite: `npm test && npm run lint` — all existing + new tests must pass
+- [X] T026 Run quickstart.md validation: walk through `dubsado client list` → `dubsado client get <id>` → `dubsado form list` → `dubsado form get <id>` end-to-end with a live session
 
 **Checkpoint**: `npm test` passes, `npm run lint` passes, skill file updated, quickstart validated.
 
