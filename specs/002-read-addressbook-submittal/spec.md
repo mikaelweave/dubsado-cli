@@ -107,10 +107,10 @@ verifying output contains the correct form fields.
 
 ### Edge Cases
 
-- What happens when the API returns a paginated response that exceeds a single page?
+- **Pagination (deferred)**: The client search endpoint returns paginated results. In v1, the CLI retrieves the first page only (count=50, page=1). No truncation warning is emitted. Pagination support (auto-paging, `--page`/`--limit` flags) is deferred to a future feature.
 - How does the system handle clients or forms with missing or null fields?
 - What happens if the v2 API response shape differs from expected (e.g., new fields added by Dubsado)?
-- How does the system handle rate limiting responses (HTTP 429)?
+- **Rate limiting (deferred)**: HTTP 429 responses are not specially handled in v1. They surface as a standard API error via the existing error path. Retry/backoff logic is deferred to a future feature.
 - What happens when a client or form ID contains special characters?
 
 ## Requirements *(mandatory)*

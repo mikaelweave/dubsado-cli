@@ -1,0 +1,19 @@
+{
+  "form": {
+    "_id": "6a1234567890abcdef000001",
+    "name": "Client Questionnaire",
+    "formType": "questionnaire",
+    "status": "completed",
+    "client": {
+      "_id": "69cee6a7c563610589bf24a2",
+      "firstName": "Mikael",
+      "lastName": "Weaver"
+    },
+    "job": "6a1234567890abcdef000010",
+    "createdAt": "2026-04-01T10:00:00.000Z",
+    "updatedAt": "2026-04-02T14:30:00.000Z",
+    "__v": 2,
+    "templateData": { "sections": [] },
+    "renderMeta": { "theme": "default" }
+  }
+}

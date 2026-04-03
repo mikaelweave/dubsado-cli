@@ -96,6 +96,124 @@ Output:
 - `0` — Success
 - `1` — Error (auth failure, expired session, invalid input, network error)
 
+## Client
+
+### dubsado client list
+
+```bash
+dubsado client list
+dubsado client list --pretty
+```
+
+Lists clients from the authenticated Dubsado account (first page, up to 50).
+
+Output:
+
+```json
+{
+  "ok": true,
+  "data": [
+    {
+      "id": "69cee6a7c563610589bf24a2",
+      "firstName": "Mikael",
+      "lastName": "Weaver",
+      "email": "mikael@mikael.dev",
+      "phone": "555-123-4567",
+      "company": "Weaver Design Co",
+      "tags": ["vip", "photography"],
+      "createdAt": "2026-03-15T10:30:00.000Z"
+    }
+  ]
+}
+```
+
+### dubsado client get \<id\>
+
+```bash
+dubsado client get 69cee6a7c563610589bf24a2
+dubsado client get 69cee6a7c563610589bf24a2 --pretty
+```
+
+Retrieves a single client by ID.
+
+Output:
+
+```json
+{
+  "ok": true,
+  "data": {
+    "id": "69cee6a7c563610589bf24a2",
+    "firstName": "Mikael",
+    "lastName": "Weaver",
+    "email": "mikael@mikael.dev",
+    "phone": "555-123-4567",
+    "company": "Weaver Design Co",
+    "tags": ["vip", "photography"],
+    "createdAt": "2026-03-15T10:30:00.000Z"
+  }
+}
+```
+
+## Form
+
+### dubsado form list
+
+```bash
+dubsado form list
+dubsado form list --pretty
+```
+
+Lists forms (questionnaires, contracts, etc.) from the authenticated Dubsado account.
+
+Output:
+
+```json
+{
+  "ok": true,
+  "data": [
+    {
+      "id": "6a1234567890abcdef000001",
+      "name": "Client Questionnaire",
+      "type": "questionnaire",
+      "status": "completed",
+      "clientId": "69cee6a7c563610589bf24a2",
+      "clientName": "Mikael Weaver",
+      "projectId": "6a1234567890abcdef000010",
+      "createdAt": "2026-04-01T10:00:00.000Z",
+      "updatedAt": "2026-04-02T14:30:00.000Z"
+    }
+  ]
+}
+```
+
+### dubsado form get \<id\>
+
+```bash
+dubsado form get 6a1234567890abcdef000001
+dubsado form get 6a1234567890abcdef000001 --pretty
+```
+
+Retrieves a single form by ID with populated client references.
+
+Output:
+
+```json
+{
+  "ok": true,
+  "data": {
+    "id": "6a1234567890abcdef000001",
+    "name": "Client Questionnaire",
+    "type": "questionnaire",
+    "status": "completed",
+    "clientId": "69cee6a7c563610589bf24a2",
+    "clientName": "Mikael Weaver",
+    "projectId": "6a1234567890abcdef000010",
+    "createdAt": "2026-04-01T10:00:00.000Z",
+    "updatedAt": "2026-04-02T14:30:00.000Z"
+  }
+}
+```
+
 ## Global Flags
 
 - `--pretty` — Format JSON output with indentation

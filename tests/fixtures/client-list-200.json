@@ -1,0 +1,45 @@
+{
+  "clients": [
+    {
+      "_id": "69cee6a7c563610589bf24a2",
+      "firstName": "Mikael",
+      "lastName": "Weaver",
+      "email": "mikael@mikael.dev",
+      "phone": "555-123-4567",
+      "company": { "name": "Weaver Design Co" },
+      "address": {
+        "street": "123 Main St",
+        "city": "Austin",
+        "state": "TX",
+        "zip": "78701",
+        "country": "US"
+      },
+      "tags": ["vip", "photography"],
+      "createdAt": "2026-03-15T10:30:00.000Z",
+      "hmac": "abc123hmac",
+      "churnkey": "ck_xxxx",
+      "attribution": { "source": "direct" },
+      "__v": 3,
+      "accountId": "acct_001"
+    },
+    {
+      "_id": "69cee6a7c563610589bf24b3",
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "email": "jane@example.com",
+      "phone": "",
+      "company": {},
+      "address": {},
+      "tags": [],
+      "createdAt": "2026-04-01T08:00:00.000Z",
+      "hmac": "def456hmac",
+      "churnkey": "ck_yyyy",
+      "attribution": {},
+      "__v": 1,
+      "accountId": "acct_001"
+    }
+  ],
+  "totalCount": 2,
+  "page": 1,
+  "count": 50
+}

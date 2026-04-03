@@ -21,9 +21,10 @@ Represents a person or business in the user's Dubsado account.
 | email       | string   | `email`           | Primary email address                    |
 | phone       | string   | `phone`           | Phone number (may be empty)              |
 | company     | string   | `company.name`    | Company name (may be empty/absent)       |
-| address     | object   | `address`         | Address fields (street, city, state, zip, country) — TBD exact shape from fixture |
 | tags        | string[] | `tags`            | Tags/labels (may be empty array)         |
 | createdAt   | string   | `createdAt`       | ISO 8601 date string, normalized         |
+
+> **Note**: `address` (object) is deferred from v1 — complex nested shape, omitted from the initial contract for simplicity.
 
 **Fields excluded**: `hmac`, `churnkey`, `attribution`, internal IDs, `__v`, `accountId`, and any other internal/system fields discovered during implementation.
 
@@ -41,17 +42,17 @@ Represents a form that a customer has submitted in Dubsado — questionnaires, i
 
 **Clean output shape** (allowlist — only these fields are emitted):
 
-| Field       | Type     | Source            | Notes                                    |
-| ----------- | -------- | ----------------- | ---------------------------------------- |
-| id          | string   | `_id`             | Dubsado MongoDB ObjectId                 |
-| name        | string   | `name` or `title` | Form name/title — exact field TBD        |
-| type        | string   | `type` or `formType` | Form category (questionnaire, contract, etc.) — exact field TBD |
-| status      | string   | `status`          | Submission status (e.g., draft, sent, completed) |
-| clientId    | string   | `client._id` or `client` | Associated client ID (populated or bare) |
-| clientName  | string   | `client.firstName + client.lastName` | Populated client name (if available) |
-| projectId   | string   | `projectId` or `job` | Associated project/job ID                |
-| createdAt   | string   | `createdAt`       | ISO 8601 date string, normalized         |
-| updatedAt   | string   | `updatedAt`       | ISO 8601 date string, normalized         |
+| Field       | Type     | Source                                 | Notes                                                            |
+| ----------- | -------- | -------------------------------------- | ---------------------------------------------------------------- |
+| id          | string   | `_id`                                  | Dubsado MongoDB ObjectId                                         |
+| name        | string   | `name` or `title`                      | Form name/title — exact field TBD                                |
+| type        | string   | `type` or `formType`                   | Form category (questionnaire, contract, etc.) — exact field TBD  |
+| status      | string   | `status`                               | Submission status (e.g., draft, sent, completed)                 |
+| clientId    | string   | `client._id` or `client`               | Associated client ID (populated or bare)                         |
+| clientName  | string   | `client.firstName + client.lastName`   | Populated client name (if available)                             |
+| projectId   | string   | `projectId` or `job`                   | Associated project/job ID                                        |
+| createdAt   | string   | `createdAt`                            | ISO 8601 date string, normalized                                 |
+| updatedAt   | string   | `updatedAt`                            | ISO 8601 date string, normalized                                 |
 
 **Fields excluded**: Internal fields, raw template data, rendering metadata, `__v`, etc.
 
