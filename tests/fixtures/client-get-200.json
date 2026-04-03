@@ -1,0 +1,24 @@
+{
+  "client": {
+    "_id": "69cee6a7c563610589bf24a2",
+    "firstName": "Mikael",
+    "lastName": "Weaver",
+    "email": "mikael@mikael.dev",
+    "phone": "555-123-4567",
+    "company": { "name": "Weaver Design Co" },
+    "address": {
+      "street": "123 Main St",
+      "city": "Austin",
+      "state": "TX",
+      "zip": "78701",
+      "country": "US"
+    },
+    "tags": ["vip", "photography"],
+    "createdAt": "2026-03-15T10:30:00.000Z",
+    "hmac": "abc123hmac",
+    "churnkey": "ck_xxxx",
+    "attribution": { "source": "direct" },
+    "__v": 3,
+    "accountId": "acct_001"
+  }
+}

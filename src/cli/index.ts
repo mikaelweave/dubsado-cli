@@ -9,6 +9,10 @@ import { makeExportCommand } from './auth/export.js';
 import { makeStatusCommand } from './auth/status.js';
 import { makeLogoutCommand } from './auth/logout.js';
 import { makeMeCommand } from './user/me.js';
+import { makeClientListCommand } from './client/list.js';
+import { makeClientGetCommand } from './client/get.js';
+import { makeFormListCommand } from './form/list.js';
+import { makeFormGetCommand } from './form/get.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -50,7 +54,21 @@ const user = program
 
 user.addCommand(makeMeCommand());
 
-export { program, auth, user };
+const client = program
+  .command('client')
+  .description('Client commands');
+
+client.addCommand(makeClientListCommand());
+client.addCommand(makeClientGetCommand());
+
+const form = program
+  .command('form')
+  .description('Form commands');
+
+form.addCommand(makeFormListCommand());
+form.addCommand(makeFormGetCommand());
+
+export { program, auth, user, client, form };
 
 // Only parse when run directly (not imported for testing)
 const isDirectRun =

@@ -1,20 +1,16 @@
 <!--
 SYNC IMPACT REPORT
 ==================
-Version change:        (none) → 1.0.0 (initial ratification)
-Modified principles:   N/A — initial document
-Added sections:        Core Principles (I–V), Technology Stack, Development Workflow, Governance
+Version change:        1.0.0 → 1.0.1 (clarification)
+Modified principles:   III. Session-Cookie Authentication — updated to reflect v2 API reality
+                       (JWT token cookie only, removed stale CSRF/x-brand references)
+Modified examples:     I. CLI-First — updated command examples to use singular resource names
+                       matching actual implementation (client, form, user)
+Added sections:        N/A
 Removed sections:      N/A
 
 Templates requiring updates:
-  ✅ .specify/templates/plan-template.md     — Constitution Check gates deferred to runtime read;
-                                               no structural change needed
-  ✅ .specify/templates/spec-template.md     — No mandatory section additions required
-  ✅ .specify/templates/tasks-template.md    — Testing marked OPTIONAL aligns with Principle IV
-  ✅ .specify/templates/checklist-template.md — Generic; no constitution-specific changes needed
-  ⚠  .specify/templates/commands/            — Directory does not exist in this project;
-                                               agents live in .github/agents/ — reviewed, no
-                                               agent-specific (CLAUDE-only) references found
+  ✅ No template changes needed — clarification only
 
 Deferred TODOs:        None
 -->
@@ -26,7 +22,7 @@ Deferred TODOs:        None
 ### I. CLI-First
 
 Every Dubsado operation MUST be exposed as a discrete CLI command. Commands follow the
-pattern `dubsado <resource> <action>` (e.g. `dubsado projects list`, `dubsado clients get <id>`).
+pattern `dubsado <resource> <action>` (e.g. `dubsado user me`, `dubsado client list`, `dubsado form get <id>`).
 All output goes to stdout; errors and diagnostics go to stderr. There are no GUI, SDK, or
 library-only interfaces — the CLI is the sole interface contract.
 
@@ -41,10 +37,11 @@ file entry is considered incomplete.
 ### III. Session-Cookie Authentication
 
 Dubsado has no public API. Authentication MUST replicate browser session behavior: a
-`dubsado auth login` command POSTs credentials, captures `Set-Cookie` response headers, and
-persists cookies plus CSRF token to `~/.config/dubsado-cli/session.json` (file mode 0600).
-All subsequent requests MUST replay the session cookies and the `x-csrf-token` / `x-brand`
-headers. On session expiry (401 or login-redirect response), the CLI MUST exit with a clear
+`dubsado auth login` command captures the JWT session cookie and persists it to
+`~/.config/dubsado-cli/session.json` (file mode 0600). All subsequent requests MUST replay
+the `token` cookie via the `Cookie` header. The v2 API (`hello.dubsado.com`) requires only
+this single JWT cookie — no CSRF token or additional headers are needed for read operations.
+On session expiry (401 or login-redirect response), the CLI MUST exit with a clear
 re-auth error message — never silently retry or swallow stale-session failures.
 
 ### IV. Read-Before-Write
@@ -93,4 +90,4 @@ Report in this file.
 All feature plans MUST include a Constitution Check gate before Phase 0 research and again
 after Phase 1 design.
 
-**Version**: 1.0.0 | **Ratified**: 2026-04-02 | **Last Amended**: 2026-04-02
+**Version**: 1.0.1 | **Ratified**: 2026-04-02 | **Last Amended**: 2026-04-02
