@@ -121,6 +121,75 @@ dubsado user me
 }
 ```
 
+### `dubsado client list`
+
+List clients from your Dubsado account:
+
+```bash
+dubsado client list
+```
+
+```json
+{
+  "ok": true,
+  "data": [
+    {
+      "id": "69cee6a7...",
+      "firstName": "Jane",
+      "lastName": "Doe",
+      "email": "jane@example.com",
+      "phone": "555-123-4567",
+      "company": "Doe Design Co",
+      "tags": ["vip"],
+      "createdAt": "2026-03-15T10:30:00.000Z"
+    }
+  ]
+}
+```
+
+### `dubsado client get <id>`
+
+Fetch a single client by ID:
+
+```bash
+dubsado client get 69cee6a7c563610589bf24a2
+```
+
+### `dubsado form list`
+
+List forms (questionnaires, contracts, etc.):
+
+```bash
+dubsado form list
+```
+
+```json
+{
+  "ok": true,
+  "data": [
+    {
+      "id": "6a123456...",
+      "name": "Client Questionnaire",
+      "type": "questionnaire",
+      "status": "completed",
+      "clientId": "69cee6a7...",
+      "clientName": "Jane Doe",
+      "projectId": "6a123456...",
+      "createdAt": "2026-04-01T10:00:00.000Z",
+      "updatedAt": "2026-04-02T14:30:00.000Z"
+    }
+  ]
+}
+```
+
+### `dubsado form get <id>`
+
+Fetch a single form by ID:
+
+```bash
+dubsado form get 6a1234567890abcdef000001
+```
+
 ## Global Flags
 
 | Flag        | Description                          |

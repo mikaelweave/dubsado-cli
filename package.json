@@ -6,6 +6,19 @@
   "bin": {
     "dubsado": "./dist/cli/index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mikaelweave/dubsado-cli.git"
+  },
+  "homepage": "https://github.com/mikaelweave/dubsado-cli",
+  "author": "Mikael Weaver",
+  "keywords": [
+    "dubsado",
+    "cli",
+    "api",
+    "llm",
+    "crm"
+  ],
   "scripts": {
     "build": "tsc",
     "dev": "tsx src/cli/index.ts",
