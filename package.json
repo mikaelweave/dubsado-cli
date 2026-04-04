@@ -1,6 +1,6 @@
 {
   "name": "@mikaelweave/dubsado-cli",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "CLI wrapper for the Dubsado API — optimized for LLM consumption",
   "type": "module",
   "bin": {
