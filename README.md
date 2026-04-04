@@ -12,7 +12,7 @@ Every command outputs structured JSON to stdout: `{ "ok": true, "data": { ... } 
 ## Install
 
 ```bash
-npm install -g dubsado-cli
+npm install -g @mikaelweave/dubsado-cli
 ```
 
 If you plan to use browser-based login (the default), install Chromium once:

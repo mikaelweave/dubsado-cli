@@ -1,10 +1,13 @@
 {
-  "name": "dubsado-cli",
+  "name": "@mikaelweave/dubsado-cli",
   "version": "0.1.0",
   "description": "CLI wrapper for the Dubsado API — optimized for LLM consumption",
   "type": "module",
   "bin": {
     "dubsado": "./dist/cli/index.js"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "repository": {
     "type": "git",
